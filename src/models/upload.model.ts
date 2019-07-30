@@ -9,6 +9,8 @@ export class Upload {
 		this.path = '';
 		this.size = '';
 		this.created_at = '';
+		this.description = '';
+		this.title = "";
 	}
 	public fieldname;
 	public originalname;
@@ -19,4 +21,6 @@ export class Upload {
 	public path;
 	public size;
 	public created_at;
+	public title;
+	public description;
 }

@@ -1,45 +1,30 @@
-<header class="header clearfix">
-  <nav>
-      <ul class="nav nav-pills float-right">
-          <li class="nav-item">
-              <a class="nav-link" href="#">Home </a>
-          </li>
-          <li class="nav-item">
-              <button #addPost type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
-                  Add
-              </button>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link active" href="/upload">Upload <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-              <button (click)="logout()" type="button" class="btn btn-link">
-                  Logout
-              </button>
-          </li>
-      </ul>
-  </nav>
-  <h3 class="text-muted">Angular Blog App</h3>
-</header>
 <main role="main">
-<input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
-
-<button type="button" class="btn btn-success btn-s" 
-  (click)="uploader.uploadAll()" 
-  [disabled]="!uploader.getNotUploadedItems().length" >
-      Upload an Image
-</button>
-
-<div>
-    aSasa
-    <div *ngFor="let image of images">
-            <p>{{image.path}}</p>
-            <img src="{{image.path}}">
+    <h2>Upload project details </h2>
+    <div class="upload-panel">
+        <div class="form-group">
+            <label for="projectTitle">Title:</label>
+            <input type="text" [(ngModel)]="uploadDetails.title" id="projectTitle" name="projectTitle" required />
+        </div>
+        <div class="form-group">
+            <label for="projectDescription">Description:</label>
+            <input type="text" [(ngModel)]="uploadDetails.description" id="projectDescription" name="projectDescription" required />
+        </div>
+        <div class="form-group">
+            <label for="photos">Upload Image</label>
+            <input id="photos" name="photos" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple />
+        </div>
+        <button type="submit" class="btn btn-success" (click)="upload()">
+            <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
+        </button>
     </div>
-    
-</div>
-</main>
 
-<footer class="footer">
-  <p>&copy; Akanksha 2019</p>
-</footer>
+    <div>
+        <ul class="uploaded-image">
+            <li *ngFor="let image of images">
+                <p>{{image.title}}</p>
+                <p>{{image.description}}</p>
+                <img src="/uploads/{{ image.filename}}">
+            </li>
+        </ul>
+    </div>
+</main>

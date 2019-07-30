@@ -13,6 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { ShowPostComponent } from './show-post/show-post.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { UploadComponent } from './upload/upload.component';
+import { IndexHomeComponent } from './index-home/index-home.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 //service
 import { CommonService } from './service/common.service';
@@ -26,7 +29,10 @@ import { CommonService } from './service/common.service';
     ShowPostComponent,
     AddPostComponent,
     UploadComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    IndexHomeComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

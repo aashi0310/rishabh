@@ -8,6 +8,8 @@ const User = require('./model/user');
 const Post = require('./model/post');
 const uploadImage = require('./model/uploadImg');
 
+var serveStatic = require('serve-static')
+
 //upload
 const path = require('path');
 const fs = require('fs');
@@ -20,21 +22,26 @@ let storage = multer.diskStorage({
         cb(null, DIR);
     },
     filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now() + '.' + path.extname(file.originalname));
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
 let upload = multer({ storage: storage });
 
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.use(serveStatic(path.join(__dirname, './uploads')))
+app.use(serveStatic(path.join(__dirname, './uploads')))
+
 //Login API
 app.post('/api/user/login', (req, res) => {
-    mongoose.connect(url, function (err) {
+    mongoose.connect(url, function(err) {
         if (err) throw err;
         User.find({
-            username: req.body.username, password: req.body.password
-        }, function (err, user) {
+            username: req.body.username,
+            password: req.body.password
+        }, function(err, user) {
             if (err) throw err;
             if (user.length === 1) {
                 return res.status(200).json({
@@ -54,7 +61,7 @@ app.post('/api/user/login', (req, res) => {
 
 //Get all post API
 app.post('/api/post/getAllPost', (req, res) => {
-    mongoose.connect(url, function (err) {
+    mongoose.connect(url, function(err) {
         if (err) throw err;
         Post.find({}, [], { sort: { _id: -1 } }, (err, doc) => {
             if (err) throw err;
@@ -68,7 +75,7 @@ app.post('/api/post/getAllPost', (req, res) => {
 
 //Create post API
 app.post('/api/post/createPost', (req, res) => {
-    mongoose.connect(url, function (err) {
+    mongoose.connect(url, function(err) {
         if (err) throw err;
         const post = new Post({
             title: req.body.title,
@@ -86,11 +93,9 @@ app.post('/api/post/createPost', (req, res) => {
 
 //Update post API
 app.post('/api/post/updatePost', (req, res) => {
-    mongoose.connect(url, function (err) {
+    mongoose.connect(url, function(err) {
         if (err) throw err;
-        Post.update(
-            { _id: req.body.id },
-            { title: req.body.title, description: req.body.description },
+        Post.update({ _id: req.body.id }, { title: req.body.title, description: req.body.description },
             (err, doc) => {
                 if (err) throw err;
                 return res.status(200).json({
@@ -103,7 +108,7 @@ app.post('/api/post/updatePost', (req, res) => {
 
 //Delete Post
 app.post('/api/post/deletePost', (req, res) => {
-    mongoose.connect(url, function (err) {
+    mongoose.connect(url, function(err) {
         if (err) throw err;
         Post.findByIdAndRemove(req.body.id,
             (err, doc) => {
@@ -117,40 +122,43 @@ app.post('/api/post/deletePost', (req, res) => {
 })
 
 //Image upload
-app.post('/api/upload', upload.single('photo'), function (req, res) {
-    if (!req.file) {
+
+app.post('/api/upload', upload.array("uploads[]", 12), function(req, res) {
+    if (!req.files) {
         console.log("No file received");
         return res.send({
             success: false
         });
 
     } else {
-        var uploadimage = new uploadImage ({
-            fieldname: req.file.fieldname,
-            originalname: req.file.originalname,
-            encoding: req.file.encoding,
-            mimetype: req.file.mimetype,
-            destination:req.file.destination,
-            filename: req.file.filename,
-            path: req.file.path,
-            size: req.file.size
-          })
-          uploadimage.save(function(err){
-            if (err){console.log(err)}
-            else {
-              res.redirect('/uploads');
-            }
-          })
-        console.log('file received');
-        return res.send({
-            success: true
-        })
+        for (var i = 0; i < req.files.length; i++) {
+            var uploadimage = new uploadImage({
+                fieldname: req.files[i].fieldname,
+                originalname: req.files[i].originalname,
+                encoding: req.files[i].encoding,
+                mimetype: req.files[i].mimetype,
+                destination: req.files[i].destination,
+                filename: req.files[i].filename,
+                path: req.files[i].path,
+                size: req.files[i].size,
+                description: req.body.description,
+                title: req.body.title
+            })
+            uploadimage.save(function(err) {
+                if (err) { console.log(err) } else {
+                    console.log('uploaded');
+                    return res.send(req.files[i]);
+                }
+            })
+        }
+
+
     }
 });
 
 //get all image
 app.post('/api/post/getAllImages', (req, res) => {
-    mongoose.connect(url, function (err) {
+    mongoose.connect(url, function(err) {
         if (err) throw err;
         uploadImage.find({}, [], { sort: { _id: -1 } }, (err, doc) => {
             if (err) throw err;

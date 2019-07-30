@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class HomeComponent {
 
   @ViewChild('addPost', { static: true }) addBtn: ElementRef;
-
+  
   constructor(private commonService: CommonService, private router: Router) {
 
     this.commonService.postEdit_Observable.subscribe(res => {
@@ -19,8 +19,4 @@ export class HomeComponent {
 
   }
 
-  logout() {
-    localStorage.removeItem('loggedInUser');
-    this.router.navigate(['/']);
-  }
 }
