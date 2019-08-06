@@ -15,76 +15,13 @@
                     <h3>Graphic Design<span class="separator">,&nbsp;</span>Typography<span class="separator">,&nbsp;</span></h3>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-4 project-wrap">
+            <div class="col-12 col-sm-6 col-md-4 project-wrap" *ngFor="let image of images">
                 <div class="project-image">
-                    <img src="../../assets/images/project1.jpg" alt="img" />
+                    <img src="/uploads/{{ image.filename}}" alt="img" />
                 </div>
                 <div class="project-description">
-                    <h1>Title</h1>
-                    <h3>Description</h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-4 project-wrap">
-                <div class="project-image">
-                    <img src="../../assets/images/project1.jpg" alt="img" />
-                </div>
-                <div class="project-description">
-                    <h1>Title</h1>
-                    <h3>Description</h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-4 project-wrap">
-                <div class="project-image">
-                    <img src="../../assets/images/project1.jpg" alt="img" />
-                </div>
-                <div class="project-description">
-                    <h1>Title</h1>
-                    <h3>Description</h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-4 project-wrap">
-                <div class="project-image">
-                    <img src="../../assets/images/project1.jpg" alt="img" />
-                </div>
-                <div class="project-description">
-                    <h1>Title</h1>
-                    <h3>Description</h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-4 project-wrap">
-                <div class="project-image">
-                    <img src="../../assets/images/project1.jpg" alt="img" />
-                </div>
-                <div class="project-description">
-                    <h1>Title</h1>
-                    <h3>Description</h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-4 project-wrap">
-                <div class="project-image">
-                    <img src="../../assets/images/project1.jpg" alt="img" />
-                </div>
-                <div class="project-description">
-                    <h1>Title</h1>
-                    <h3>Description</h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-4 project-wrap">
-                <div class="project-image">
-                    <img src="../../assets/images/project1.jpg" alt="img" />
-                </div>
-                <div class="project-description">
-                    <h1>Title</h1>
-                    <h3>Description</h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-4 project-wrap">
-                <div class="project-image">
-                    <img src="../../assets/images/project1.jpg" alt="img" />
-                </div>
-                <div class="project-description">
-                    <h1>Title</h1>
-                    <h3>Description</h3>
+                    <h1>{{image.title}}</h1>
+                    <h3>{{image.description}}</h3>
                 </div>
             </div>
         </div>

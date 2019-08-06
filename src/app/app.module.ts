@@ -29,7 +29,6 @@ import { CommonService } from './service/common.service';
     ShowPostComponent,
     AddPostComponent,
     UploadComponent,
-    FileSelectDirective,
     IndexHomeComponent,
     HeaderComponent,
     FooterComponent

@@ -8,9 +8,9 @@ import { Router, NavigationEnd  } from '@angular/router';
 })
 export class HeaderComponent {
 
-  private toggle : boolean = false;
+  public toggle : boolean = false;
   public loggedInUser ;
-  constructor(private router: Router, private render:Renderer) {
+  constructor(public router: Router, private render:Renderer) {
    
   }
 
