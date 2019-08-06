@@ -26,7 +26,7 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
-                            "404.html",
+                            "src/404.html",
                             "src/uploads",
                             { "glob": "**/*", "input": "./uploads", "output": "/uploads/" }
                         ],
@@ -86,7 +86,7 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
-                            "404.html",
+                            "src/404.html",
                             "src/uploads",
                             { "glob": "**/*", "input": "./uploads", "output": "/uploads/" }
                         ],
