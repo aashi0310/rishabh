@@ -28,6 +28,11 @@
                             "src/assets",
                             "src/404.html",
                             "src/uploads",
+                            "src/app",
+                            "src/environments",
+                            "src/models",
+                            "src/root",
+                            "src/server",
                             { "glob": "**/*", "input": "./uploads", "output": "/uploads/" }
                         ],
                         "styles": [
@@ -88,6 +93,11 @@
                             "src/assets",
                             "src/404.html",
                             "src/uploads",
+                            "src/app",
+                            "src/environments",
+                            "src/models",
+                            "src/root",
+                            "src/server",
                             { "glob": "**/*", "input": "./uploads", "output": "/uploads/" }
                         ],
                         "styles": [
