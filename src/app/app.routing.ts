@@ -8,9 +8,9 @@ import { IndexHomeComponent } from './index-home/index-home.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: IndexHomeComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'upload', component: UploadComponent }
+    { path: 'login', component: LoginComponent, pathMatch: 'full' },
+    { path: 'home', component: HomeComponent, pathMatch: 'full' },
+    { path: 'upload', component: UploadComponent, pathMatch: 'full' }
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(AppRoutes);
