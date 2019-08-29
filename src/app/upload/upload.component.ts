@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { UploadService } from './upload.service';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map'
 
@@ -22,7 +23,7 @@ export class UploadComponent implements OnInit {
   filesToUpload: Array<File> = [];
   public uploadDetails: Upload;
 
-  constructor(private http: HttpClient, private UploadService: UploadService, private commonService: CommonService) {
+  constructor(private http: HttpClient, private UploadService: UploadService, private commonService: CommonService, private router: Router) {
     this.uploadDetails = new Upload();
   }
 
@@ -63,5 +64,10 @@ export class UploadComponent implements OnInit {
     this.UploadService.getAllImages().subscribe(result => {
       this.images = result['data'];
     });
+  }
+
+  //Navigate to project upload page
+  goToProjectUpload(id) {
+    this.router.navigate(['/projectupload', id]); 
   }
 }

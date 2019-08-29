@@ -16,12 +16,14 @@
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4 project-wrap" *ngFor="let image of images">
-                <div class="project-image">
-                    <img src="/uploads/{{ image.filename}}" alt="img" />
-                </div>
-                <div class="project-description">
-                    <h1>{{image.title}}</h1>
-                    <h3>{{image.description}}</h3>
+                <div (click)="goToProject( image._id)">
+                    <div class="project-image">
+                        <img src="/uploads/{{ image.filename}}" alt="img" />
+                    </div>
+                    <div class="project-description">
+                        <h1>{{image.title}}</h1>
+                        <h3>{{image.description}}</h3>
+                    </div>
                 </div>
             </div>
         </div>

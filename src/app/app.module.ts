@@ -16,6 +16,8 @@ import { UploadComponent } from './upload/upload.component';
 import { IndexHomeComponent } from './index-home/index-home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProjectPageComponent } from './project-page/project-page.component';
+import { ProjectUploadComponent } from './project-upload/project-upload.component';
 
 //service
 import { CommonService } from './service/common.service';
@@ -31,7 +33,9 @@ import { CommonService } from './service/common.service';
     UploadComponent,
     IndexHomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProjectPageComponent,
+    ProjectUploadComponent
   ],
   imports: [
     BrowserModule,

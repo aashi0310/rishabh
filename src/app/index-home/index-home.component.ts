@@ -16,9 +16,14 @@ export class IndexHomeComponent {
     this.getAllImages();
   }
   //Get all images
-getAllImages() {
-  this.IndexHomeService.getAllImages().subscribe(result => {
-    this.images = result['data'];
-  });
-}
+  getAllImages() {
+    this.IndexHomeService.getAllImages().subscribe(result => {
+      this.images = result['data'];
+    });
+  }
+
+  //Navigate to Project page
+  goToProject(id) {
+    this.router.navigate(['/projectpage', id]); 
+  }
 }

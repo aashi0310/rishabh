@@ -19,11 +19,30 @@
     </div>
 
     <div>
+
         <ul class="uploaded-image">
             <li *ngFor="let image of images">
-                <p>{{image.title}}</p>
-                <p>{{image.description}}</p>
-                <img src="/uploads/{{ image.filename}}">
+                <div class="imageTable imageTable-5cols">
+                    <div class="imageTable-cell">
+                        <img src="/uploads/{{ image.filename}}">
+                    </div>
+
+                    <div class="imageTable-cell">
+                        <p>{{image.title}}</p>
+                    </div>
+
+                    <div class="imageTable-cell">
+                        <p>{{image.description}}</p>
+                    </div>
+
+                    <div class="imageTable-cell">
+                        <a href="javascript:void(0)" (click)="goToProjectUpload( image._id)">Upload Image for project gallery</a>
+                    </div>
+
+                    <div class="imageTable-cell">
+                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
