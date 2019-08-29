@@ -121,6 +121,21 @@ app.post('/api/post/deletePost', (req, res) => {
     });
 })
 
+//Delete Gallery
+app.post('/api/post/deleteGallery', (req, res) => {
+    mongoose.connect(url, function(err) {
+        if (err) throw err;
+        uploadImage.findByIdAndRemove(req.body.id,
+            (err, doc) => {
+                if (err) throw err;
+                return res.status(200).json({
+                    status: 'success',
+                    data: doc
+                })
+            })
+    });
+})
+
 //Image upload
 
 app.post('/api/upload', upload.array("uploads[]", 12), function(req, res) {

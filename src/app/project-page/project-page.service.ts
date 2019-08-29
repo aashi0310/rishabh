@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Upload } from '../../models/upload.model';
 
 @Injectable()
-export class UploadService {
+export class ProjectPageService {
 
     constructor(private http: HttpClient) {
 
@@ -14,8 +14,5 @@ export class UploadService {
         return this.http.post('/api/post/getAllImages', {})
     }
 
-    //Delete Gallery
-    deleteGallery(id){
-        return this.http.post('/api/post/deleteGallery',{id : id})
-    }
+
 }

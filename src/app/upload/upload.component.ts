@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { UploadService } from './upload.service';
 import { Router } from '@angular/router';
@@ -22,6 +22,9 @@ export class UploadComponent implements OnInit {
   public image_path;
   filesToUpload: Array<File> = [];
   public uploadDetails: Upload;
+  public gallery_to_delete;
+
+  @ViewChild('closeBtn', { static: true }) closeBtn: ElementRef;
 
   constructor(private http: HttpClient, private UploadService: UploadService, private commonService: CommonService, private router: Router) {
     this.uploadDetails = new Upload();
@@ -69,5 +72,20 @@ export class UploadComponent implements OnInit {
   //Navigate to project upload page
   goToProjectUpload(id) {
     this.router.navigate(['/projectupload', id]); 
+  }
+
+  //Delete gallery
+  setDelete(image: Upload) {
+    this.gallery_to_delete = image;
+  }
+  unsetDelete() {
+    this.gallery_to_delete = null;
+  }
+
+  deleteGallery() {
+    this.UploadService.deleteGallery(this.gallery_to_delete._id).subscribe(res => {
+      this.getAllImages();
+      this.closeBtn.nativeElement.click();
+    })
   }
 }
