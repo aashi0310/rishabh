@@ -136,8 +136,26 @@ app.post('/api/post/deleteGallery', (req, res) => {
     });
 })
 
-//Image upload
 
+
+//Display Gallery images
+app.post('/api/post/getAllGalleryImages', (req, res) => {
+    mongoose.connect(url, function(err) {
+        console.log('aashi');
+        console.log(req.body.id);
+        if (err) throw err;
+        uploadImage.findById(req.body.id,
+            (err, doc) => {
+                if (err) throw err;
+                return res.status(200).json({
+                    status: 'success',
+                    data: doc
+                })
+            })
+    });
+})
+
+//Image upload
 app.post('/api/upload', upload.array("uploads[]", 12), function(req, res) {
     if (!req.files) {
         console.log("No file received");

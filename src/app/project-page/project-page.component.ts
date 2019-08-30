@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectPageService } from './project-page.service';
 
 @Component({
@@ -10,17 +10,17 @@ import { ProjectPageService } from './project-page.service';
 })
 export class ProjectPageComponent {
   public images: any[];
-  constructor(private router: Router, private ProjectPageService: ProjectPageService) {    
+  constructor(private router: Router, private ProjectPageService: ProjectPageService, private route: ActivatedRoute) {    
   }
 
   ngOnInit() {
-    this.getAllImages();
-
+    this.getAllGallImages();
   }
  //Get all images
- getAllImages() {
-  this.ProjectPageService.getAllImages().subscribe(result => {
-    this.images = result['data'];
+ getAllGallImages() {
+    const id = this.route.snapshot.paramMap.get('id');
+  this.ProjectPageService.getAllGallImages(id).subscribe(result => {
+    this.images = [result['data']];
   });
 }
 }

@@ -1,0 +1,15 @@
+// Import 
+@import '../../assets/scss/main.scss';
+.upload-panel {
+    @include padding (20px);
+    .form-group {
+        @include padding(0 0 20px 0);
+        label {
+            display: $display-block;
+            @include padding(0 0 10px 0);
+        }
+        textarea {
+            resize: none;
+        }
+    }
+}
