@@ -20,7 +20,7 @@ export class ProjectPageComponent {
  getAllGallImages() {
     const id = this.route.snapshot.paramMap.get('id');
   this.ProjectPageService.getAllGallImages(id).subscribe(result => {
-    this.images = [result['data']];
+    this.images = result['data'];
   });
 }
 }

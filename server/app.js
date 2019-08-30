@@ -7,6 +7,7 @@ const url = 'mongodb://localhost/blogDb';
 const User = require('./model/user');
 const Post = require('./model/post');
 const uploadImage = require('./model/uploadImg');
+const UploadGalleryImage = require('./model/uploadGalImg');
 
 var serveStatic = require('serve-static')
 
@@ -28,20 +29,29 @@ let storage = multer.diskStorage({
 let upload = multer({ storage: storage });
 
 
+const GALDIR = './uploads/gallery';
+let gallstorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, GALDIR);
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+let uploadGall = multer({ storage: gallstorage });
+
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(serveStatic(path.join(__dirname, './uploads')))
-app.use(serveStatic(path.join(__dirname, './uploads')))
+app.use(serveStatic(path.join(__dirname, './uploads/gallery')))
 
 //Login API
 app.post('/api/user/login', (req, res) => {
     mongoose.connect(url, function(err) {
         if (err) throw err;
-        User.find({
-            username: req.body.username,
-            password: req.body.password
-        }, function(err, user) {
+        User.find({ username: req.body.username, password: req.body.password }, function(err, user) {
             if (err) throw err;
             if (user.length === 1) {
                 return res.status(200).json({
@@ -141,10 +151,8 @@ app.post('/api/post/deleteGallery', (req, res) => {
 //Display Gallery images
 app.post('/api/post/getAllGalleryImages', (req, res) => {
     mongoose.connect(url, function(err) {
-        console.log('aashi');
-        console.log(req.body.id);
         if (err) throw err;
-        uploadImage.findById(req.body.id,
+        UploadGalleryImage.find({ parentgallery: req.body.id },
             (err, doc) => {
                 if (err) throw err;
                 return res.status(200).json({
@@ -178,6 +186,38 @@ app.post('/api/upload', upload.array("uploads[]", 12), function(req, res) {
                 title: req.body.title
             })
             uploadimage.save(function(err) {
+                if (err) { console.log(err) } else {
+                    console.log('uploaded');
+                    return res.send(req.files[i]);
+                }
+            })
+        }
+
+
+    }
+});
+//Gallery Image upload
+app.post('/api/uploadgallery', uploadGall.array("uploads[]", 12), function(req, res) {
+    if (!req.files) {
+        console.log("No file received");
+        return res.send({
+            success: false
+        });
+
+    } else {
+        for (var i = 0; i < req.files.length; i++) {
+            var uploadgalleryimage = new UploadGalleryImage({
+                fieldname: req.files[i].fieldname,
+                originalname: req.files[i].originalname,
+                encoding: req.files[i].encoding,
+                mimetype: req.files[i].mimetype,
+                destination: req.files[i].destination,
+                filename: req.files[i].filename,
+                path: req.files[i].path,
+                size: req.files[i].size,
+                parentgallery: req.body.parentgallery
+            })
+            uploadgalleryimage.save(function(err) {
                 if (err) { console.log(err) } else {
                     console.log('uploaded');
                     return res.send(req.files[i]);
