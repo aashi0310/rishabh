@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { ProjectUploadService } from './project-upload.service';
@@ -23,7 +23,9 @@ export class ProjectUploadComponent implements OnInit{
   public image_path;
   filesToUpload: Array<File> = [];
   public uploadDetails: Upload;
-  public gallery_to_delete;
+  public images_to_delete;
+
+  @ViewChild('closeBtn', { static: true }) closeBtn: ElementRef;
 
   constructor(private http: HttpClient, private ProjectUploadService: ProjectUploadService, private commonService: CommonService, private router: Router, private route: ActivatedRoute) {    
     this.uploadDetails = new Upload();
@@ -62,9 +64,24 @@ export class ProjectUploadComponent implements OnInit{
 
   //Get all images
   getAllImages() {
-    this.ProjectUploadService.getAllImages().subscribe(result => {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.ProjectUploadService.getAllGallImages(id).subscribe(result => {
       this.images = result['data'];
     });
   }
 
+  //Delete gallery
+  setDelete(image: Upload) {
+    this.images_to_delete = image;
+  }
+  unsetDelete() {
+    this.images_to_delete = null;
+  }
+
+  deleteProjectImage() {
+    this.ProjectUploadService.deleteProjectImages(this.images_to_delete._id).subscribe(res => {
+      this.getAllImages();
+      this.closeBtn.nativeElement.click();
+    })
+  }
 }

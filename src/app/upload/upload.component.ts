@@ -16,7 +16,7 @@ const URL = 'http://localhost:4200/api/upload';
   styleUrls: ['./upload.component.scss'],
   providers: [UploadService]
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent implements OnInit{
   title = 'app';
   public images: any[];
   public image_path;

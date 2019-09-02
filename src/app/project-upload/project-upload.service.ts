@@ -10,12 +10,12 @@ export class ProjectUploadService {
     }
 
     //Get Post
-    getAllImages() {
-        return this.http.post('/api/post/getAllImages', {})
+    getAllGallImages(id) {
+        return this.http.post('/api/post/getAllGalleryImages/', { id: id })
     }
 
     //Delete Gallery
-    deleteGallery(id){
-        return this.http.post('/api/post/deleteGallery',{id : id})
+    deleteProjectImages(id) {
+        return this.http.post('/api/post/deleteProjectImages', { id: id })
     }
 }
