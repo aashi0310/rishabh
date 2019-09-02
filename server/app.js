@@ -146,7 +146,20 @@ app.post('/api/post/deleteGallery', (req, res) => {
     });
 })
 
-
+//Delete Project images
+app.post('/api/post/deleteProjectImages', (req, res) => {
+    mongoose.connect(url, function(err) {
+        if (err) throw err;
+        UploadGalleryImage.findByIdAndRemove(req.body.id,
+            (err, doc) => {
+                if (err) throw err;
+                return res.status(200).json({
+                    status: 'success',
+                    data: doc
+                })
+            })
+    });
+})
 
 //Display Gallery images
 app.post('/api/post/getAllGalleryImages', (req, res) => {
