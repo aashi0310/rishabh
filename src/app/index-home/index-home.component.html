@@ -6,7 +6,25 @@
     </div>
     <section class="project-grid">
         <div class="row no-pad">
-            <div class="col-12 col-sm-6 col-md-4 project-wrap">
+            <a *ngFor="let image of images" class="js-editable-target editable project-cover js-project-cover-touch hold-space" (click)="goToProject( image._id)" href="javascript:void(0)" data-context="pages" data-identity="id:p5be447aecd17592ab8ac34de934d2163a159f3349445697b391d4">
+                <div class="cover-image-wrap">
+                    <div class="cover-image">
+                        <div class="cover cover-normal">
+
+                            <img class="cover__img js-lazy image-loaded" src="/uploads/{{ image.filename}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="details-wrap">
+                    <div class="details">
+                        <div class="details-inner">
+                            <div class="title preserve-whitespace">{{image.title}}</div>
+                            <div class="title preserve-whitespace">{{image.description}}</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!--  <div class="col-12 col-sm-6 col-md-4 project-wrap">
                 <div class="project-image">
                     <img src="./assets/images/project1.jpg" alt="img" />
                 </div>
@@ -15,7 +33,7 @@
                     <h3>Graphic Design<span class="separator">,&nbsp;</span>Typography<span class="separator">,&nbsp;</span></h3>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-4 project-wrap" *ngFor="let image of images">
+          <div class="col-12 col-sm-6 col-md-4 project-wrap" *ngFor="let image of images">
                 <div (click)="goToProject( image._id)">
                     <div class="project-image">
                         <img src="/uploads/{{ image.filename}}" alt="img" />
@@ -25,7 +43,8 @@
                         <h3>{{image.description}}</h3>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
+
     </section>
 </main>

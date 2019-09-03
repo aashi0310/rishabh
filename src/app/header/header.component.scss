@@ -4,7 +4,7 @@
 /* Header */
 
 .header-container {
-    @include padding(100px 5%);
+    @include padding(20px);
     /* logo */
     .logo-text {
         color: $primary-color;
@@ -13,7 +13,7 @@
         font-weight: $weight-700;
         line-height: 22px;
         @include padding (0px);
-        text-align: $text-left;
+        text-align: $text-center;
         &:focus {
             color: $hover-color;
         }
@@ -25,6 +25,7 @@
         font-weight: $weight-400;
         line-height: 22px;
         @include padding (0px);
+        text-align: $text-center;
         text-transform: $text-uppercase;
     }
 }
@@ -32,8 +33,15 @@
 
 /* Navigation */
 
-.nav-list {
+.left-align {
+    text-align: $text-left;
+}
+
+.right-align {
     text-align: $text-right;
+}
+
+.nav-list {
     li {
         display: $display-inlineblock;
         @include margin(0 10px 0 0);
