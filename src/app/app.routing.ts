@@ -7,12 +7,14 @@ import { UploadComponent } from './upload/upload.component';
 import { IndexHomeComponent } from './index-home/index-home.component';
 import { ProjectPageComponent } from './project-page/project-page.component';
 import { ProjectUploadComponent } from './project-upload/project-upload.component';
+import { AboutPageComponent } from './about-page/about-page.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: IndexHomeComponent },
     { path: 'login', component: LoginComponent, pathMatch: 'full' },
     { path: 'home', component: HomeComponent, pathMatch: 'full' },
     { path: 'upload', component: UploadComponent, pathMatch: 'full' },
+    { path: 'about', component: AboutPageComponent, pathMatch: 'full' },
     { path: 'projectpage/:id', component: ProjectPageComponent, pathMatch: 'full' },
     { path: 'projectupload/:id', component: ProjectUploadComponent, pathMatch: 'full' }
 ];

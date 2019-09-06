@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './root.component.html'
 })
 export class RootComponent {
+
+  //Go to top
+  goToTop() {
+    window.scrollTo(0,0);
+  }
 }
 

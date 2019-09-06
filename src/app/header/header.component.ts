@@ -38,7 +38,7 @@ export class HeaderComponent {
   logout() {
     event.preventDefault();
     localStorage.removeItem('loggedInUser');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
   
 }

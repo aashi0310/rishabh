@@ -2,22 +2,20 @@
     <div class="row header-container">
         <nav class="col-4 left-align">
             <ul class="nav-list nonResp-menu">
-                <li><a href="#" class="active">Projects</a></li>
-                <!-- <li><a href="/home" class="active" *ngIf="loggedInUser">Add</a></li> -->
-                <li><a href="/upload" class="active" *ngIf="loggedInUser">Upload</a></li>
+                <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Projects</a></li>
+                <li><a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">About</a></li>
+                <li><a href="/upload" class="" *ngIf="loggedInUser">Upload</a></li>
                 <li><a href="javascript:void(0)" (click)="logout()" class="active" *ngIf="loggedInUser">Logout</a></li>
             </ul>
         </nav>
         <div class="col-4 logo">
-            <h1 class="logo-text"><a href="#">Name</a></h1>
-            <h2 class="logo-secondary">Title</h2>
+            <h1 class="logo-text"><a href="#">R S</a></h1>
         </div>
         <nav class="col-4 right-align">
             <ul class="nav-list nonResp-menu">
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fab fa-behance" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
             </ul>
         </nav>
     </div>

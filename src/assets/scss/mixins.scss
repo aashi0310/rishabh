@@ -71,11 +71,10 @@
     perspective-origin: $val;
 }
 
-@mixin font( $name, $src, $hash) {
+@mixin font-face($font-family, $file-path) {
     @font-face {
-        font-family: $name;
-        src: url('fonts/' + $src + '.eot');
-        src: url('fonts/' + $src + '.eot?#iefix') format('embedded-opentype'), url('fonts/' + $src + '.woff') format('woff'), url('fonts/' + $src + '.ttf') format('truetype'), url('fonts/' + $src + '.svg#' + $hash) format('svg');
+        font-family: $font-family;
+        src: url($file-path) format('truetype');
         font-weight: normal;
         font-style: normal;
     }
