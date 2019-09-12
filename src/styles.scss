@@ -15,8 +15,11 @@
     bottom: 10%;
     right: 10%;
     @include rounded-corners(50%, 50%, 50%, 50%);
-    display: $display-block;
+    display: none;
     outline: none;
+    &.active {
+        display: block;
+    }
 }
 
 html {

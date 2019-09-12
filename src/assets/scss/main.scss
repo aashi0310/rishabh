@@ -1,4 +1,49 @@
 @import 'color.scss';
 @import 'mixins.scss';
 @import 'variables.scss';
-//Main fonts
+//common css
+
+/* Page title
+================================== */
+
+.masthead {
+    @include padding(100px 20px);
+    text-align: $text-center;
+    .masthead-contents {
+        max-width: 1100px;
+        @include margin(0 auto);
+    }
+    h1 {
+        font-size: $extra-large-fontsize;
+    }
+    h3 {
+        font-size: $semi-large-fontsize;
+        @include padding(20px 0);
+        color: $grey;
+    }
+}
+
+
+/* Tables
+================================== */
+
+.imageTable {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 1em 0;
+    padding: 0;
+}
+
+.imageTable-cell {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 100%; // Default to full width
+    padding: 0.8em 1.2em;
+    overflow: hidden; // Or flex might break
+    border: solid 3px white;
+}
+
+.imageTable-5cols>.imageTable-cell {
+    width: 20%; // for 3 columns
+    // width: 16.6%; for 4 columns
+}

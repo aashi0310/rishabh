@@ -228,7 +228,7 @@ a {
 }
 
 a:focus {
-    outline: thin dotted;
+    outline: none;
 }
 
 
@@ -240,6 +240,7 @@ a:active,
 a:hover {
     outline: 0;
     text-decoration: none;
+    color: inherit;
 }
 
 

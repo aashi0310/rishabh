@@ -1,15 +1,14 @@
 <main role="main">
-    <h1>Project page</h1>
     <ul class="uploaded-image">
         <li *ngFor="let image of images">
             <div class="imageTable imageTable-5cols">
                 <div class="imageTable-cell">
                     <img src="/uploads/gallery/{{ image.filename}}">
                 </div>
-
+                <!-- 
                 <div class="imageTable-cell" *ngIf="loggedInUser">
                     <i (click)="setDelete(image)" data-toggle="modal" data-target="#deleteModal" title="Delete" class="fas fa-trash-alt" aria-hidden="true"></i>
-                </div>
+                </div> -->
             </div>
         </li>
     </ul>
