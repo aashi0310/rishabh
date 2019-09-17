@@ -4,7 +4,7 @@
             <ul class="nav-list nonResp-menu">
                 <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Projects</a></li>
                 <li><a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">About</a></li>
-                <li><a href="/upload" routerLinkActive="active" class="" *ngIf="loggedInUser">Upload</a></li>
+                <li><a href="/upload" routerLinkActive="active" class="" *ngIf="loggedInUser" [routerLinkActiveOptions]="{exact: true}">Upload</a></li>
                 <li><a href="javascript:void(0)" (click)="logout()" *ngIf="loggedInUser">Logout</a></li>
             </ul>
         </nav>

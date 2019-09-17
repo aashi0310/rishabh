@@ -14,7 +14,7 @@
     position: fixed;
     bottom: 10%;
     right: 10%;
-    @include rounded-corners(50%, 50%, 50%, 50%);
+    @include rounded-corners(50%);
     display: none;
     outline: none;
     &.active {
@@ -25,6 +25,7 @@
 html {
     scroll-behavior: smooth;
     font-family: $MontserratRegular;
+    overflow-x: hidden;
 }
 
 // Common

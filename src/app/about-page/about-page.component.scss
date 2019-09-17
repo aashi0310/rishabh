@@ -4,17 +4,17 @@
 .contact-me {
     margin-top: 50px;
     .mail-me {
-        display: block;
+        display: $display-block;
         padding: 10px;
         background-color: $seconday-color;
-        border-radius: 5px;
+        @include rounded-corners (5px);
         width: 100px;
-        margin: 0 auto;
+        @include margin (0 auto);
         font-weight: $weight-700;
-        outline: none;
+        outline: $none;
     }
     .nav-list {
-        text-align: center;
+        text-align: $text-center;
         @include padding (20px 0 20px 0);
         li a {
             &:hover i,
@@ -27,6 +27,6 @@
 
 .profile-pic {
     max-width: 100%;
-    margin: 50px auto;
-    display: block;
+    @include margin(50px auto);
+    display: $display-block;
 }

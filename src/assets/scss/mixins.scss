@@ -21,11 +21,11 @@
     box-shadow: #{$inset} $top $left $blur $colour;
 }
 
-@mixin rounded-corners($tl: 4px, $tr: 4px, $br: 4px, $bl: 4px) {
-    -webkit-border-radius: $tl $tr $br $bl;
-    -moz-border-radius: $tl $tr $br $bl;
-    -o-border-radius: $tl $tr $br $bl;
-    border-radius: $tl $tr $br $bl;
+@mixin rounded-corners($data) {
+    -webkit-border-radius: $data;
+    -moz-border-radius: $data;
+    -o-border-radius: $data;
+    border-radius: $data;
 }
 
 @mixin rotate( $val: -2deg) {

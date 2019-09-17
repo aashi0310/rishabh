@@ -8,18 +8,19 @@
 
 .masthead {
     @include padding(100px 20px);
-    text-align: $text-center;
     .masthead-contents {
-        max-width: 1100px;
-        @include margin(0 auto);
+        text-align: $text-center;
     }
     h1 {
         font-size: $extra-large-fontsize;
+        color: $black;
+        font-family: $MontserratBold;
     }
-    h3 {
+    p {
         font-size: $semi-large-fontsize;
-        @include padding(20px 0);
-        color: $grey;
+        color: $grey2;
+        font-family: $OpenSansRegular;
+        @include padding(10px 0 0);
     }
 }
 
