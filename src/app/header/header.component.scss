@@ -55,3 +55,49 @@
         }
     }
 }
+
+// Responsive menu 
+.responsive-menu {
+    display: $none;
+    i {
+        font-size: 26px;
+        margin-top: 2px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    .hidden-menu {
+        display: $none;
+        &.active {
+            display: $display-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $white;
+            position: $position-fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9;
+        }
+        .close-menu {
+            position: $position-absolute;
+            top: 50px;
+            right: 20px;
+        }
+        ul {
+            li {
+                text-align: $text-center;
+                @include padding(20px 0);
+            }
+        }
+    }
+}
+
+@include for-phone-only {
+    .responsive-menu {
+        display: $display-block;
+    }
+    nav {
+        display: $display-none;
+    }
+}

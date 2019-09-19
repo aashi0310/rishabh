@@ -4,7 +4,7 @@
 /*Introduction*/
 
 .project-grid {
-    overflow: hidden;
+    overflow: $hidden;
     position: $position-relative;
 }
 
@@ -89,39 +89,32 @@
         top: 0;
         right: 0;
         .details {
-            background: #f2f2f2;
+            background: $concrete;
             height: 100%;
             position: relative;
             width: 100%;
-            transition: background 0.2s ease;
+            @include transition(background 0.2s ease);
             .details-inner {
-                -webkit-transform: translateY(-50%);
-                -moz-transform: translateY(-50%);
-                -ms-transform: translateY(-50%);
-                -o-transform: translateY(-50%);
-                transform: translateY(-50%);
+                @include transform (translateY(-50%));
                 top: 50%;
                 left: 0;
-                position: absolute;
+                position: $position-absolute;
                 width: 100%;
-                padding-bottom: 6%;
-                padding-left: 8%;
-                padding-right: 8%;
-                padding-top: 6%;
-                overflow: hidden;
+                @include padding(6% 8%);
+                overflow: $hidden;
                 .title,
                 .description {
                     color: $dark-grey;
                     font-family: $MontserratBold;
                     font-size: $fontsize-24;
-                    text-align: center;
-                    text-transform: uppercase;
+                    text-align: $text-center;
+                    text-transform: $text-uppercase;
                 }
                 .description {
                     font-size: $small-fontsize;
                     font-family: $OpenSansRegular;
                     color: $grey3;
-                    text-transform: none;
+                    text-transform: $display-none;
                 }
             }
         }
@@ -129,7 +122,8 @@
 }
 
 .link-transition a {
-    transition: background 0.2s ease, color 0.2s ease;
+    @include transition(background 0.2s ease);
+    @include transition(color 0.2s ease);
 }
 
 .project-cover .title,
@@ -145,17 +139,17 @@
 .project-cover .custom,
 .project-cover .description,
 .project-cover .date {
-    transition: color 0.2s ease;
+    @include transition(color 0.2s ease);
 }
 
 .project-cover:hover .details {
-    background: #191919 !important;
+    background: $cod-gray !important;
 }
 
 .project-cover:hover .title,
 .project-cover:hover .description {
-    color: #ffffff !important;
-    font-style: normal !important;
+    color: $white !important;
+    font-style: $normal !important;
     font-weight: 500 !important;
 }
 
@@ -163,14 +157,14 @@
     .project-cover {
         .cover-image-wrap {
             height: 200px;
-            float: none !important;
-            position: relative;
+            float: $none !important;
+            position: $position-relative;
             width: 100%;
         }
         .details-wrap {
-            float: none !important;
+            float: $none !important;
             height: 100px;
-            position: relative;
+            position: $position-relative;
             width: 100%;
         }
     }

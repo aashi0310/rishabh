@@ -37,7 +37,8 @@
     position: $position-relative;
     .project-wrap {
         position: $position-relative;
-        transition: 0.2s ease, color 0.2s ease;
+        @include transition(0.2s ease);
+        @include transition(color 0.2s ease);
         &:hover {
             .project-description {
                 display: $display-block;
@@ -69,8 +70,8 @@
             display: $display-none;
             color: $white;
             font-style: $normal;
-            transition: opacity 0.15s ease;
-            transition: 0.2s ease;
+            @include transition(opacity 0.15s ease);
+            @include transition(0.2s ease);
             h1 {
                 font-size: $semi-large-fontsize;
                 font-weight: $weight-700;

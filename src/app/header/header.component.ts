@@ -29,7 +29,7 @@ export class HeaderComponent {
 
   //Toggle responsive menu
   hideHiddenMenu(event:any){
-    var divToChange = document.getElementById('resp-nav nav-icon')[0];
+    var divToChange = document.getElementById('hidden-menu');
     divToChange.classList.remove('active'); 
     this.toggle = false;  
   }
