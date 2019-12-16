@@ -1,0 +1,32 @@
+// Import 
+@import '../../assets/scss/main.scss';
+@import '../header/header.component.scss';
+.contact-me {
+    margin-top: 50px;
+    .mail-me {
+        display: $display-block;
+        @include padding (10px);
+        background-color: $seconday-color;
+        @include rounded-corners (5px);
+        width: 100px;
+        @include margin (0 auto);
+        font-weight: $weight-700;
+        text-align: $text-center;
+    }
+    .nav-list {
+        text-align: $text-center;
+        @include padding (20px 0 20px 0);
+        li a {
+            &:hover i,
+            i {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+.profile-pic {
+    max-width: 100%;
+    @include margin(50px auto);
+    display: $display-block;
+}
